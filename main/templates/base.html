@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}
+
+        {% endblock title %}</title>
+
+    <!-- Bootstrap CDN css link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <!-- Custom CSS link -->
+    <link rel="stylesheet" href="{% static 'css/basic/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/basic/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/basic/shop.css' %}">
+    <link rel="stylesheet" href="{% static 'css/basic/categories.css' %}">
+    <link rel="stylesheet" href="{% static 'css/basic/new_arrival.css' %}">
+    <link rel="stylesheet" href="{% static 'css/basic/deals.css' %}">
+    <link rel="stylesheet" href="{% static 'css/basic/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'css/product/fashion.css' %}">
+    <link rel="stylesheet" href="{% static 'css/whishlist/whishlist.css' %}">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+
+
+
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <div class="container navbar">
+
+            <div class="logo">
+                Shop<span>ora</span>
+            </div>
+
+            <!-- Navigation Links -->
+
+            <div class="nav-links" id="navLinks">
+                <a href="{% url 'index-page' %}">Home</a>
+                <a href="{% url 'shop-page' %}">Shop</a>
+                <a href="{% url 'categories-page' %}">Categories</a>
+                <a href="{% url 'new-arrival-page' %}">New Arrivals</a>
+                <a href="{% url 'deals-page' %}">Deals</a>
+                <a href="{% url 'contact-page' %}">Contact</a>
+            </div>
+
+            <div class="nav-icons">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <a href="{% url 'whishlist-page' %}">
+                    <i class="fa-regular fa-heart"></i>
+                </a>
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <a href="{% url 'register' %}">
+                    <i class="fa-regular fa-user"></i>
+                </a>
+            </div>
+
+            <!-- Hamburger -->
+
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+        </div>
+
+    </nav>
+
+    {% block content %}
+
+    {% endblock content %}
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div class="footer-col">
+
+                    <h3>Shopora</h3>
+
+                    <p>
+                        Premium products designed for modern lifestyle and comfort.
+                    </p>
+
+                    <div class="socials">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-x-twitter"></i>
+                        <i class="fa-brands fa-youtube"></i>
+                    </div>
+
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <a href="{% url 'index-page' %}">Home</a>
+                    <a href="{% url 'shop-page' %}">Shop</a>
+                    <a href="#">About</a>
+                    <a href="{% url 'contact-page' %}">Contact</a>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Customer Support</h3>
+                    <a href="#">FAQs</a>
+                    <a href="#">Returns</a>
+                    <a href="#">Shipping</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p>Email: support@shopora.com</p>
+                    <p>Phone: +977 9800000000</p>
+                    <p>Kathmandu, Nepal</p>
+                </div>
+
+            </div>
+
+            <div class="copyright">
+                © 2026 Shopora. All Rights Reserved.
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- Bootraps CDN js link -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <!-- Custom js link -->
+
+    <script src="{% static 'js/basic/base.js' %}"></script>
+    <script src="{% static 'js/basic/index.js' %}"></script>
+    <script src="{% static 'js/basic/shop.js' %}"></script>
+    <script src="{% static 'js/basic/categories.js' %}"></script>
+    <script src="{% static 'js/basic/new-arrival.js' %}"></script>
+    <script src="{% static 'js/basic/deals.js' %}"></script>
+    <script src="{% static 'js/basic/contact.js' %}"></script>
+    <script src="{% static 'js/product/fashion.js' %}"></script>
+    <script src="{% static 'js/product/fashion.js' %}"></script>
+
+
+</body>
+
+</html>

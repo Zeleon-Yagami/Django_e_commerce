@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Shop
+{% endblock title %}
+
+{% block content %}
+<!-- SHOP HEADER -->
+
+<section class="shop-header">
+
+    <div class="container">
+
+        <h1>Shop Collection</h1>
+
+        <p>
+            Discover premium fashion, gadgets, and accessories.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- SHOP -->
+
+<section class="shop-section">
+
+    <div class="container shop-layout">
+
+        <!-- SIDEBAR -->
+
+        <div class="sidebar">
+
+            <h3>Categories</h3>
+
+            <ul>
+                <li>Fashion</li>
+                <li>Electronics</li>
+                <li>Sneakers</li>
+                <li>Accessories</li>
+            </ul>
+
+            <h3>Price Range</h3>
+
+            <input type="range" min="0" max="1000">
+
+            <h3>Colors</h3>
+
+            <div class="colors">
+
+                <span class="black"></span>
+                <span class="red"></span>
+                <span class="blue"></span>
+                <span class="green"></span>
+
+            </div>
+
+        </div>
+
+        <!-- PRODUCTS -->
+
+        <div class="products-grid">
+
+            <!-- PRODUCT -->
+
+            <div class="product-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1000&auto=format&fit=crop">
+
+                <h3>Luxury Watch</h3>
+                <div class="wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+
+                <p class="price">$120</p>
+
+                <button class="cart-btn">
+                    Add To Cart
+                </button>
+
+            </div>
+
+            <!-- PRODUCT -->
+
+            <div class="product-card">
+
+
+
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop">
+
+                <h3>Modern Sneakers</h3>
+
+                <div class="wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+
+                <p class="price">$95</p>
+
+                <button class="cart-btn">
+                    Add To Cart
+                </button>
+
+            </div>
+
+            <!-- PRODUCT -->
+
+            <div class="product-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1000&auto=format&fit=crop">
+
+                <h3>Headphone</h3>
+                <div class="wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+
+                <p class="price">$180</p>
+
+                <button class="cart-btn">
+                    Add To Cart
+                </button>
+
+            </div>
+
+            <!-- PRODUCT -->
+
+            <div class="product-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=1000&auto=format&fit=crop">
+
+                <h3>Camera</h3>
+                <div class="wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+
+                <p class="price">$340</p>
+
+                <button class="cart-btn">
+                    Add To Cart
+                </button>
+
+            </div>
+
+            <!-- PRODUCT -->
+
+            <div class="product-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1000&auto=format&fit=crop">
+
+                <h3>Smart Phone</h3>
+                <div class="wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+
+                <p class="price">$560</p>
+
+                <button class="cart-btn">
+                    Add To Cart
+                </button>
+
+            </div>
+
+            <!-- PRODUCT -->
+
+            <div class="product-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1000&auto=format&fit=crop">
+
+                <h3>Oversized T-Shirt</h3>
+                <div class="wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+
+                <p class="price">$40</p>
+
+                <button class="cart-btn">
+                    Add To Cart
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+{% endblock content %}
+
+{% block js %}
+<script src="{% static 'js/basic/shop.js' %}"></script>
+{% endblock js %}

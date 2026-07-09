@@ -1,0 +1,63 @@
+/* Hamburger Hidden On Desktop */
+
+.mobile-menu-btn {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Mobile */
+
+@media screen and (max-width:768px) {
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .nav-icons {
+        display: none;
+    }
+
+    .nav-links {
+
+        position: absolute;
+
+        top: 80px;
+        left: 0;
+
+        width: 100%;
+
+        background: #fff;
+
+        display: none;
+
+        flex-direction: column;
+
+        text-align: center;
+
+        padding: 25px 0;
+
+        box-shadow:
+            0 10px 20px rgba(0, 0, 0, .08);
+
+        gap: 20px;
+
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+}
+
+
+
+/* for message color */
+.success {
+    color: green;
+}
+
+.error {
+    color: red;
+}

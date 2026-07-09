@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block content %}
+<!-- HERO -->
+
+<section class="hero">
+    <div class="container hero-wrapper">
+
+        <div class="hero-text">
+            <h1>Upgrade Your <span>Style</span> With Premium Essentials</h1>
+
+            <p>
+                Discover modern fashion, electronics, and lifestyle products
+                designed for comfort, performance, and confidence.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="{% url 'shop-page' %}">
+                    <button class="btn btn-primary">Shop Now</button>
+                </a>
+                <a href="{% url 'new-arrival-page' %}">
+                    <button class="btn btn-secondary">Explore</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-image">
+
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1200&auto=format&fit=crop"
+                alt="">
+
+            <div class="discount-card">
+                <h2>50%</h2>
+                <p>OFF</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- CATEGORY -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Shop By Category</h2>
+            <p>Explore premium collections</p>
+        </div>
+
+        <div class="category-grid">
+
+            {% for c in category %}
+            <a href="{% url 'fashion-page' %}?cate_id={{c.id}}">
+                <div class="category-card">
+                    <img src="{{c.image.url}}" alt="error">
+                    <div class="overlay">
+                        <h3>{{c.name}}</h3>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PRODUCTS -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Trending Products</h2>
+            <p>Most loved products this week</p>
+        </div>
+
+        <div class="product-grid">
+
+            <div class="product-card">
+
+                <div class="product-img">
+                    <img
+                        src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1000&auto=format&fit=crop">
+                </div>
+
+                <div class="product-info">
+                    <h4>Luxury Watch</h4>
+                    <div class="wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <div class="price">$120</div>
+                    <button class="add-cart">Add To Cart</button>
+                </div>
+
+            </div>
+
+            <div class="product-card">
+                <div class="product-img">
+                    <img
+                        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop">
+                </div>
+
+                <div class="product-info">
+
+                    <h4>Modern Sneakers</h4>
+                    <div class="wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <div class="price">$95</div>
+                    <button class="add-cart">Add To Cart</button>
+                </div>
+
+            </div>
+
+            <div class="product-card">
+
+                <div class="product-img">
+                    <img
+                        src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1000&auto=format&fit=crop">
+                </div>
+
+                <div class="product-info">
+                    <h4>Premium Headphone</h4>
+                    <div class="wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <div class="price">$180</div>
+                    <button class="add-cart">Add To Cart</button>
+                </div>
+
+            </div>
+
+            <div class="product-card">
+
+                <div class="product-img">
+                    <img
+                        src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=1000&auto=format&fit=crop">
+                </div>
+
+                <div class="product-info">
+                    <h4>Professional Camera</h4>
+                    <div class="wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <div class="price">$340</div>
+                    <button class="add-cart">Add To Cart</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PROMO BANNER -->
+
+<section>
+
+    <div class="container">
+
+        <div class="banner">
+
+            <div>
+                <h2>Summer Sale 2026</h2>
+                <p>Get up to 70% discount on premium products.</p>
+                <button class="btn btn-primary">Shop Deals</button>
+            </div>
+
+            <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=1000&auto=format&fit=crop"
+                width="350" style="border-radius:20px;">
+
+        </div>
+
+    </div>
+
+</section>
+{% endblock content %}

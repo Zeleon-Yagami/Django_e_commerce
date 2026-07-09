@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+Fashion
+{% endblock title %}
+
+{% block content %}
+
+<section class="fashion-page">
+
+    <!-- HERO -->
+
+    <section class="fashion-hero">
+
+        <h1 class="fashion-title">
+            Fashion Collection
+        </h1>
+
+        <p class="fashion-subtitle">
+            Premium styles for modern lifestyle
+        </p>
+
+    </section>
+
+    <!-- FILTER -->
+
+    <section class="fashion-filter">
+
+        <button class="fashion-filter-btn active">
+            All
+        </button>
+
+        <button class="fashion-filter-btn">
+            Men
+        </button>
+
+        <button class="fashion-filter-btn">
+            Women
+        </button>
+
+        <button class="fashion-filter-btn">
+            Accessories
+        </button>
+
+    </section>
+
+    <!-- PRODUCTS -->
+
+    <section class="fashion-products">
+
+        <div class="fashion-grid">
+
+
+            <!-- CARD -->
+
+            {% for p in products %}
+            <div class="fashion-card">
+
+                <img class="fashion-image" src="{{p.image.url}}" alt="error">
+
+                <div class="fashion-info">
+
+                    <h3 class="fashion-name">
+                        {{p.name}}
+                    </h3>
+
+                    <p class="fashion-price">
+                        ${{p.price}}
+                    </p>
+
+                    <button class="fashion-btn">
+                        Add To Cart
+                    </button>
+
+                </div>
+
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+</section>
+
+{% endblock content %}

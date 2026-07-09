@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+New Arrivals
+{% endblock title %}
+
+{% block content %}
+
+<section class="arrival-page">
+
+    <!-- HERO -->
+
+    <section class="arrival-hero">
+
+        <h1 class="arrival-title">
+            New Arrivals
+        </h1>
+
+        <p class="arrival-subtitle">
+            Fresh styles and latest trends just landed
+        </p>
+
+    </section>
+
+    <!-- PRODUCTS -->
+
+    <section class="arrival-products">
+
+        <div class="arrival-grid">
+
+            <!-- Product -->
+
+            <div class="arrival-card">
+
+                <span class="arrival-badge">
+                    NEW
+                </span>
+
+                <img class="arrival-image" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800"
+                    alt="Watch">
+
+                <div class="arrival-info">
+
+                    <h3 class="arrival-product-title">
+                        Smart Watch
+                    </h3>
+
+                    <p class="arrival-price">
+                        $120
+                    </p>
+
+                    <button class="arrival-btn">
+                        Add To Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Product -->
+
+            <div class="arrival-card">
+
+                <span class="arrival-badge">
+                    NEW
+                </span>
+
+                <img class="arrival-image" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800"
+                    alt="Shoes">
+
+                <div class="arrival-info">
+
+                    <h3 class="arrival-product-title">
+                        Running Shoes
+                    </h3>
+
+                    <p class="arrival-price">
+                        $95
+                    </p>
+
+                    <button class="arrival-btn">
+                        Add To Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Product -->
+
+            <div class="arrival-card">
+
+                <span class="arrival-badge">
+                    NEW
+                </span>
+
+                <img class="arrival-image" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800"
+                    alt="Headphone">
+
+                <div class="arrival-info">
+
+                    <h3 class="arrival-product-title">
+                        Wireless Headphone
+                    </h3>
+
+                    <p class="arrival-price">
+                        $180
+                    </p>
+
+                    <button class="arrival-btn">
+                        Add To Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+{% endblock content %}
+
+{% block js %}
+<script src="{% static 'js/baisc/new_arrivals.js' %}"></script>
+{% endblock js %}

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block title %}
+Contact Us
+{% endblock title %}
+
+{% block content %}
+
+<section class="contact-page">
+
+    <!-- HERO -->
+
+    <section class="contact-hero">
+
+        <h1 class="contact-title">
+            Contact Us
+        </h1>
+
+        <p class="contact-subtitle">
+            We'd love to hear from you
+        </p>
+
+    </section>
+
+    <!-- CONTACT SECTION -->
+
+    <section class="contact-section" id="contact">
+
+        <div class="contact-wrapper">
+
+            <!-- LEFT -->
+
+            <div class="contact-info">
+
+                <h2 class="contact-info-title">
+                    Get In Touch
+                </h2>
+
+                <div class="contact-item">
+                    📍 Kathmandu, Nepal
+                </div>
+
+                <div class="contact-item">
+                    📞 +977 9800000000
+                </div>
+
+                <div class="contact-item">
+                    ✉ support@shopora.com
+                </div>
+
+            </div>
+
+            <!-- RIGHT -->
+
+            <div class="contact-form-container">
+
+                <form method="POST" action="{% url 'contact-page' %}" class="contact-form">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Your Name" name="name" class="contact-input" required>
+
+                    <input type="email" placeholder="Your Email" name="email" class="contact-input" required>
+
+                    <textarea class="contact-textarea" placeholder="Your Message" name="msg" rows="6"
+                        required></textarea>
+
+                    <button type="submit" class="contact-btn">
+
+                        Send Message
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+{% endblock content %}

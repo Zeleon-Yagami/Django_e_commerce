@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block title %}
+Categories
+{% endblock title %}
+
+{% block content %}
+
+<section class="cat-page">
+
+    <!-- HERO -->
+
+    <section class="cat-hero">
+
+        <h1 class="cat-hero-title">
+            Browse Categories
+        </h1>
+
+        <p class="cat-hero-subtitle">
+            Find products from your favorite categories
+        </p>
+
+    </section>
+
+    <!-- CATEGORY GRID -->
+
+    <section class="cat-section">
+
+        <div class="cat-grid">
+
+            {% for c in category %}
+            <a href="{% url 'fashion-page' %}?cate_id={{ c.id }}">
+                <div class="cat-card">
+
+                    <img class="cat-card-image" src="{{ c.image.url }}" alt="{{ c.name }}">
+
+                    <div class="cat-card-overlay">
+
+                        <h3 class="cat-card-title">
+                            {{ c.name }}
+                        </h3>
+
+                        <p class="cat-card-count">
+                            {{ c.product_count }}+ Products
+                        </p>
+
+                    </div>
+
+                </div>
+            </a>
+            {% endfor %}
+
+
+
+
+
+        </div>
+
+    </section>
+
+</section>
+
+{% endblock content %}
+
+{% block js %}
+<script src="{% static 'js/basic/categories.js' %}"></script>
+{% endblock js %}
