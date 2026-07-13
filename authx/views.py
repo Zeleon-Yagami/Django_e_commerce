@@ -1,5 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth import login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 from .models import CustomUser
 
 # Create your views here.
@@ -41,6 +45,7 @@ def log_in(request):
         try:
             user = CustomUser.objects.get(email=email)
             if user.check_password(password):
+                login(request, user)
                 messages.success(request, "Login successful.")
                 return redirect('index-page')  # Redirect to a home page or dashboard after successful login
             else:
@@ -49,3 +54,32 @@ def log_in(request):
             messages.error(request, "User with this email does not exist.")
 
     return render(request, 'log_in.html')
+
+
+@login_required
+def profile(request):
+    return render(request, 'profile/profile.html')
+
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important to keep the user logged in
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('profile')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+
+    return render(request, 'change_password.html', {'form': form})
+
+
+@login_required
+def log_out(request):
+    logout(request)
+    messages.success(request, 'Logged out successfully.')
+    return redirect('index-page')

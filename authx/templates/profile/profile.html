@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+My Profile
+{% endblock title %}
+
+{% block content %}
+
+<section class="profile-page">
+
+    <!-- HERO -->
+
+    <section class="profile-hero">
+
+        <div class="profile-avatar">
+
+            <img src="https://i.pravatar.cc/300?img=12" alt="Profile">
+
+        </div>
+
+        <h1 class="profile-name">
+            John Doe
+        </h1>
+
+        <p class="profile-email">
+            johndoe@email.com
+        </p>
+
+    </section>
+
+    <!-- BODY -->
+
+    <section class="profile-wrapper">
+
+        <!-- LEFT MENU -->
+
+        <aside class="profile-sidebar">
+
+            <button class="profile-menu-btn profile-active">
+                <i class="fa-solid fa-user"></i>
+                Account
+            </button>
+
+            <button class="profile-menu-btn">
+                <i class="fa-solid fa-box"></i>
+                Orders
+            </button>
+
+            <button class="profile-menu-btn">
+                <i class="fa-solid fa-heart"></i>
+                Wishlist
+            </button>
+
+            <button class="profile-menu-btn">
+                <i class="fa-solid fa-location-dot"></i>
+                Address
+            </button>
+
+            <button class="profile-menu-btn">
+                <i class="fa-solid fa-lock"></i>
+                Change Password
+            </button>
+
+        </aside>
+
+        <!-- RIGHT -->
+
+        <div class="profile-content">
+
+            <h2 class="profile-section-title">
+                Personal Information
+            </h2>
+
+            <form class="profile-form">
+
+                <div class="profile-input-group">
+
+                    <label>Full Name</label>
+
+                    <input
+                    class="profile-input"
+                    type="text"
+                    value="John Doe">
+
+                </div>
+
+                <div class="profile-input-group">
+
+                    <label>Email</label>
+
+                    <input
+                    class="profile-input"
+                    type="email"
+                    value="johndoe@email.com">
+
+                </div>
+
+                <div class="profile-input-group">
+
+                    <label>Phone</label>
+
+                    <input
+                    class="profile-input"
+                    type="text"
+                    value="+977 9800000000">
+
+                </div>
+
+                <div class="profile-input-group">
+
+                    <label>Address</label>
+
+                    <textarea
+                    class="profile-textarea">Kathmandu, Nepal</textarea>
+
+                </div>
+
+                <button
+                class="profile-save-btn"
+                type="submit">
+
+                    Save Changes
+
+                </button>
+
+                <div
+                id="profileMessage"
+                class="profile-message">
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</section>
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/profile.js' %}"></script>
+{% endblock %}
