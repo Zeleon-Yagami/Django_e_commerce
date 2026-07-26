@@ -33,13 +33,15 @@
     <link rel="stylesheet" href="{% static 'css/register.css' %}">
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
     <link rel="stylesheet" href="{% static 'css/change_password.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cart/cart.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cart/checkout.css' %}">
 
 
 
 
 </head>
 
-<body>
+<body class="{% if request.user.is_authenticated %}user-authenticated{% endif %}">
 
     <!-- NAVBAR -->
 
@@ -63,12 +65,12 @@
             </div>
 
             <div class="nav-icons">
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <i class="fa-solid fa-magnifying-glass" id="searchToggle" style="cursor:pointer;"></i>
                 <a href="{% url 'whishlist-page' %}">
                     <i class="fa-regular fa-heart"></i>
                 </a>
 
-                <a href="#" class="position-relative">
+                <a href="{% url 'cart-page' %}" class="position-relative">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span id="cart-count" class="badge bg-danger position-absolute" style="top:-8px; right:-10px;">0</span>
                 </a>
@@ -100,6 +102,21 @@
         </div>
 
     </nav>
+
+    <!-- SEARCH OVERLAY -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-box">
+            <form id="searchForm" autocomplete="off">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search products...">
+                <button type="submit" class="search-submit-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+            <button class="search-close" id="searchClose">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    </div>
 
     {% block content %}
 
@@ -170,8 +187,7 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
 
-    <!-- Custom js link -->
-
+    {% block js %}
     <script src="{% static 'js/basic/base.js' %}"></script>
     <script src="{% static 'js/basic/index.js' %}"></script>
     <script src="{% static 'js/basic/shop.js' %}"></script>
@@ -183,7 +199,8 @@
     <script src="{% static 'js/wishlist.js' %}"></script>
     <script src="{% static 'js/profile.js' %}"></script>
     <script src="{% static 'js/change_password.js' %}"></script>
-
+    <script src="{% static 'js/register.js' %}"></script>
+    {% endblock js %}
 
 </body>
 

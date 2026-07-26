@@ -57,6 +57,12 @@ Contact Us
 
             <div class="contact-form-container">
 
+                {% if messages %}
+                {% for m in messages %}
+                <p id="hideMsg" class="text-center fs-5 {{m.tags}}">{{m}}</p>
+                {% endfor %}
+                {% endif %}
+
                 <form method="POST" action="{% url 'contact-page' %}" class="contact-form">
                     {% csrf_token %}
                     <input type="text" placeholder="Your Name" name="name" class="contact-input" required>

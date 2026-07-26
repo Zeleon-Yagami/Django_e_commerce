@@ -1,6 +1,5 @@
 from django.db import models
-
-from django.contrib.auth.models import User
+from django.conf import settings
 
 # Create your models here.
 class Contact(models.Model):
@@ -43,6 +42,11 @@ class Product(models.Model):
 
 
 
-# class Whishlist(models.Model):
-#     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='whishlist_products')
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+class Wishlist(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='wishlist_items')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='wishlist_items')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = 'wishlist'
+        unique_together = ('product', 'user')

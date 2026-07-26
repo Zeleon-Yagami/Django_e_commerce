@@ -1,19 +1,20 @@
-// Wishlist Toggle
+document.addEventListener("DOMContentLoaded", () => {
 
-let wishlist = document.querySelectorAll(".wishlist");
+    updateCartCount();
+    updateWishlistCount();
+    updateWishlistIcons();
 
-wishlist.forEach((item) => {
+    document.querySelectorAll(".wishlist").forEach(item => {
+        item.addEventListener("click", () => {
+            const icon = item.querySelector("i");
+            if (!icon) return;
+            const card = item.closest('.product-card');
+            toggleWishlist(icon, card);
+        });
+    });
 
-    item.addEventListener("click", () => {
-
-        let icon = item.querySelector("i");
-
-        icon.classList.toggle("fa-regular");
-        icon.classList.toggle("fa-solid");
-
-        icon.style.color = "#d4af37";
-
+    document.querySelectorAll(".add-cart").forEach(button => {
+        button.addEventListener("click", () => addToCart(button));
     });
 
 });
-// 

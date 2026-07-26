@@ -37,6 +37,10 @@ New Arrivals
                     NEW
                 </span>
 
+                <div class="wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+
                 <img class="arrival-image" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800"
                     alt="Watch">
 
@@ -66,6 +70,10 @@ New Arrivals
                     NEW
                 </span>
 
+                <div class="wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+
                 <img class="arrival-image" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800"
                     alt="Shoes">
 
@@ -94,6 +102,10 @@ New Arrivals
                 <span class="arrival-badge">
                     NEW
                 </span>
+
+                <div class="wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                </div>
 
                 <img class="arrival-image" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800"
                     alt="Headphone">
@@ -125,5 +137,5 @@ New Arrivals
 {% endblock content %}
 
 {% block js %}
-<script src="{% static 'js/basic/new_arrival.js' %}"></script>
+{{ block.super }}
 {% endblock js %}

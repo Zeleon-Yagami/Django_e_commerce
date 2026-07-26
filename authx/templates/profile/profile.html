@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-
 {% block title %}
 My Profile
 {% endblock title %}
@@ -10,31 +9,18 @@ My Profile
 
 <section class="profile-page">
 
-    <!-- HERO -->
-
     <section class="profile-hero">
 
         <div class="profile-avatar">
-
             <img src="https://i.pravatar.cc/300?img=12" alt="Profile">
-
         </div>
 
-        <h1 class="profile-name">
-            John Doe
-        </h1>
-
-        <p class="profile-email">
-            johndoe@email.com
-        </p>
+        <h1 class="profile-name">{{ request.user.name }}</h1>
+        <p class="profile-email">{{ request.user.email }}</p>
 
     </section>
 
-    <!-- BODY -->
-
     <section class="profile-wrapper">
-
-        <!-- LEFT MENU -->
 
         <aside class="profile-sidebar">
 
@@ -58,77 +44,43 @@ My Profile
                 Address
             </button>
 
-            <button class="profile-menu-btn">
+            <button class="profile-menu-btn" onclick="window.location.href='{% url 'change-password' %}'">
                 <i class="fa-solid fa-lock"></i>
                 Change Password
             </button>
 
         </aside>
 
-        <!-- RIGHT -->
-
         <div class="profile-content">
 
-            <h2 class="profile-section-title">
-                Personal Information
-            </h2>
+            <h2 class="profile-section-title">Personal Information</h2>
+
+            {% if messages %}
+            {% for m in messages %}
+            <p id="hideMsg" class="text-center fs-5 {{m.tags}}">{{m}}</p>
+            {% endfor %}
+            {% endif %}
 
             <form class="profile-form">
 
                 <div class="profile-input-group">
-
                     <label>Full Name</label>
-
-                    <input
-                    class="profile-input"
-                    type="text"
-                    value="John Doe">
-
+                    <input class="profile-input" type="text" name="name" value="{{ request.user.name }}">
                 </div>
 
                 <div class="profile-input-group">
-
                     <label>Email</label>
-
-                    <input
-                    class="profile-input"
-                    type="email"
-                    value="johndoe@email.com">
-
+                    <input class="profile-input" type="email" name="email" value="{{ request.user.email }}">
                 </div>
 
                 <div class="profile-input-group">
-
                     <label>Phone</label>
-
-                    <input
-                    class="profile-input"
-                    type="text"
-                    value="+977 9800000000">
-
+                    <input class="profile-input" type="text" name="phone_number" value="{{ request.user.phone_number }}">
                 </div>
 
-                <div class="profile-input-group">
+                <button class="profile-save-btn" type="submit">Save Changes</button>
 
-                    <label>Address</label>
-
-                    <textarea
-                    class="profile-textarea">Kathmandu, Nepal</textarea>
-
-                </div>
-
-                <button
-                class="profile-save-btn"
-                type="submit">
-
-                    Save Changes
-
-                </button>
-
-                <div
-                id="profileMessage"
-                class="profile-message">
-                </div>
+                <div id="profileMessage" class="profile-message"></div>
 
             </form>
 
@@ -141,5 +93,5 @@ My Profile
 {% endblock %}
 
 {% block js %}
-<script src="{% static 'js/profile.js' %}"></script>
+{{ block.super }}
 {% endblock %}

@@ -3,7 +3,7 @@
 
 
 {% block title %}
-Fashion
+{% if search_query %}Search: {{ search_query }}{% else %}Fashion{% endif %}
 {% endblock title %}
 
 {% block content %}
@@ -15,17 +15,26 @@ Fashion
     <section class="fashion-hero">
 
         <h1 class="fashion-title">
-            Fashion Collection
+            {% if search_query %}
+                Search Results for "{{ search_query }}"
+            {% else %}
+                Fashion Collection
+            {% endif %}
         </h1>
 
         <p class="fashion-subtitle">
-            Premium styles for modern lifestyle
+            {% if search_query %}
+                {{ products|length }} product{{ products|length|pluralize }} found
+            {% else %}
+                Premium styles for modern lifestyle
+            {% endif %}
         </p>
 
     </section>
 
     <!-- FILTER -->
 
+    {% if not search_query %}
     <section class="fashion-filter">
 
         <button class="fashion-filter-btn active">
@@ -45,6 +54,7 @@ Fashion
         </button>
 
     </section>
+    {% endif %}
 
     <!-- PRODUCTS -->
 
@@ -52,13 +62,17 @@ Fashion
 
         <div class="fashion-grid">
 
-
+            {% if products %}
             <!-- CARD -->
 
             {% for p in products %}
-            <div class="fashion-card">
+            <div class="fashion-card" data-product-id="{{ p.id }}">
 
                 <img class="fashion-image" src="{{p.image.url}}" alt="error">
+
+                <div class="wishlist">
+                    <i class="fa-{% if p.id in wishlist_ids %}solid{% else %}regular{% endif %} fa-heart" {% if p.id in wishlist_ids %}style="color:#d4af37;"{% endif %}></i>
+                </div>
 
                 <div class="fashion-info">
 
@@ -78,6 +92,12 @@ Fashion
 
             </div>
             {% endfor %}
+            {% else %}
+            <div style="grid-column: 1/-1; text-align:center; padding: 60px 20px;">
+                <p style="color:#888; font-size:18px;">No products found{% if search_query %} for "{{ search_query }}"{% endif %}.</p>
+                <a href="{% url 'fashion-page' %}" style="color:#d4af37; font-size:16px;">Browse All Products</a>
+            </div>
+            {% endif %}
 
         </div>
 

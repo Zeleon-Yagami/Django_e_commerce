@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Checkout
+{% endblock title %}
+
+{% block content %}
+
+<section class="checkout-page">
+
+    <section class="checkout-hero">
+        <h1 class="checkout-title">Checkout</h1>
+        <p class="checkout-subtitle">Complete your purchase</p>
+    </section>
+
+    <section class="checkout-section">
+        <div class="checkout-wrapper">
+
+            <form class="checkout-form" id="checkoutForm">
+
+                <div class="checkout-left">
+
+                    <h2>Shipping Information</h2>
+
+                    <div class="checkout-row">
+                        <div class="checkout-group">
+                            <label>Full Name</label>
+                            <input class="checkout-input" type="text" name="full_name" placeholder="John Doe" required>
+                        </div>
+                        <div class="checkout-group">
+                            <label>Email</label>
+                            <input class="checkout-input" type="email" name="email" placeholder="john@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="checkout-group">
+                        <label>Phone</label>
+                        <input class="checkout-input" type="tel" name="phone" placeholder="+977 9800000000" required>
+                    </div>
+
+                    <div class="checkout-group">
+                        <label>Address</label>
+                        <input class="checkout-input" type="text" name="address" placeholder="123 Main St" required>
+                    </div>
+
+                    <div class="checkout-row">
+                        <div class="checkout-group">
+                            <label>City</label>
+                            <input class="checkout-input" type="text" name="city" placeholder="Kathmandu" required>
+                        </div>
+                        <div class="checkout-group">
+                            <label>ZIP Code</label>
+                            <input class="checkout-input" type="text" name="zip" placeholder="44600">
+                        </div>
+                    </div>
+
+                    <h2 style="margin-top:30px;">Payment</h2>
+
+                    <div class="checkout-payment">
+                        <label class="checkout-radio">
+                            <input type="radio" name="payment" value="cod" checked>
+                            <span>Cash on Delivery</span>
+                        </label>
+                        <label class="checkout-radio">
+                            <input type="radio" name="payment" value="card">
+                            <span>Credit / Debit Card</span>
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="checkout-right">
+
+                    <h3>Order Summary</h3>
+
+                    <div id="checkoutItems"></div>
+
+                    <hr>
+
+                    <div class="checkout-summary-row">
+                        <span>Subtotal</span>
+                        <span id="checkoutSubtotal">$0</span>
+                    </div>
+                    <div class="checkout-summary-row">
+                        <span>Shipping</span>
+                        <span>Free</span>
+                    </div>
+                    <hr>
+                    <div class="checkout-summary-row checkout-total">
+                        <span>Total</span>
+                        <span id="checkoutTotal">$0</span>
+                    </div>
+
+                    <button type="submit" class="checkout-place-btn">Place Order</button>
+
+                    <div id="checkoutMessage" class="checkout-message"></div>
+
+                </div>
+
+            </form>
+
+        </div>
+    </section>
+
+</section>
+
+{% endblock content %}
+
+{% block js %}
+{{ block.super }}
+<script src="{% static 'js/checkout.js' %}"></script>
+{% endblock js %}

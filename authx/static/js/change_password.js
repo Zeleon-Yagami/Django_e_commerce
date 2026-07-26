@@ -1,59 +1,53 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const form = document.querySelector(".cp-form");
-
+    const current = document.getElementById("cpCurrent");
     const newPass = document.getElementById("cpNew");
-
     const confirm = document.getElementById("cpConfirm");
-
     const message = document.getElementById("cpMessage");
+    const toggles = document.querySelectorAll(".cp-toggle");
 
-    document.querySelectorAll(".cp-toggle").forEach(icon => {
-
-        icon.addEventListener("click", () => {
-
-            const input = document.getElementById(icon.dataset.target);
-
-            if (input.type === "password") {
-
-                input.type = "text";
-
-                icon.classList.remove("fa-eye");
-
-                icon.classList.add("fa-eye-slash");
-
-            } else {
-
-                input.type = "password";
-
-                icon.classList.remove("fa-eye-slash");
-
-                icon.classList.add("fa-eye");
-
+    toggles.forEach(toggle => {
+        toggle.addEventListener("click", () => {
+            const target = document.getElementById(toggle.dataset.target);
+            if (target) {
+                if (target.type === "password") {
+                    target.type = "text";
+                    toggle.classList.replace("fa-eye", "fa-eye-slash");
+                } else {
+                    target.type = "password";
+                    toggle.classList.replace("fa-eye-slash", "fa-eye");
+                }
             }
-
         });
-
     });
 
-    form.addEventListener("submit", (e) => {
+    if (form) {
+        form.addEventListener("submit", (e) => {
+            message.innerHTML = "";
 
-        e.preventDefault();
-
-        if (newPass.value !== confirm.value) {
-
-            message.innerHTML = "Passwords do not match.";
-
-            message.style.color = "#e53935";
-
-            return;
-
-        }
-
-        message.innerHTML = "Password updated successfully ✓";
-
-        message.style.color = "green";
-
-    });
+            if (current && current.value.trim() === '') {
+                e.preventDefault();
+                message.innerHTML = "Current password is required";
+                message.style.color = "#e53935";
+                current.focus();
+                return;
+            }
+            if (newPass && newPass.value.length < 6) {
+                e.preventDefault();
+                message.innerHTML = "New password must be at least 6 characters";
+                message.style.color = "#e53935";
+                newPass.focus();
+                return;
+            }
+            if (newPass && confirm && newPass.value !== confirm.value) {
+                e.preventDefault();
+                message.innerHTML = "Passwords do not match";
+                message.style.color = "#e53935";
+                confirm.focus();
+                return;
+            }
+        });
+    }
 
 });

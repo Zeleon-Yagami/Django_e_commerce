@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/wishlist.css' %}">
+<link rel="stylesheet" href="{% static 'css/whishlist/whishlist.css' %}">
 {% endblock css %}
 
 {% block title %}
@@ -13,119 +13,46 @@ Wishlist
 
 <section class="wish-page">
 
-    <!-- HERO -->
-
     <section class="wish-hero">
-
-        <h1 class="wish-title">
-            My Wishlist ❤️
-        </h1>
-
-        <p class="wish-subtitle">
-            Save products and buy them later
-        </p>
-
+        <h1 class="wish-title">My Wishlist ❤️</h1>
+        <p class="wish-subtitle">Save products and buy them later</p>
     </section>
 
-    <!-- PRODUCTS -->
-
     <section class="wish-section">
-
         <div class="wish-grid">
 
-            <!-- CARD -->
-
-            <div class="wish-card">
+            {% if wishlist_items %}
+            {% for item in wishlist_items %}
+            <div class="wish-card" data-product-id="{{ item.product.id }}">
 
                 <button class="wish-remove">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
 
-                <img class="wish-image" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200"
-                    alt="Watch">
+                {% if item.product.image %}
+                <img class="wish-image" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                {% else %}
+                <img class="wish-image" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200" alt="{{ item.product.name }}">
+                {% endif %}
 
                 <div class="wish-content">
-
-                    <h3 class="wish-name">
-                        Smart Watch
-                    </h3>
-
-                    <p class="wish-price">
-                        $120
-                    </p>
-
+                    <h3 class="wish-name">{{ item.product.name }}</h3>
+                    <p class="wish-price">${{ item.product.price }}</p>
                     <div class="wish-actions">
-
-                        <button class="wish-cart-btn">
-                            Add To Cart
-                        </button>
-
+                        <button class="wish-cart-btn">Add To Cart</button>
                     </div>
-
                 </div>
 
             </div>
-
-            <!-- CARD -->
-
-            <div class="wish-card">
-
-                <button class="wish-remove">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-
-                <img class="wish-image" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200"
-                    alt="Shoes">
-
-                <div class="wish-content">
-
-                    <h3 class="wish-name">
-                        Premium Sneakers
-                    </h3>
-
-                    <p class="wish-price">
-                        $95
-                    </p>
-
-                    <button class="wish-cart-btn">
-                        Add To Cart
-                    </button>
-
-                </div>
-
+            {% endfor %}
+            {% else %}
+            <div class="wish-empty">
+                <p>Your wishlist is empty.</p>
+                <a href="{% url 'shop-page' %}" style="color:#d4af37;">Start Shopping</a>
             </div>
-
-            <!-- CARD -->
-
-            <div class="wish-card">
-
-                <button class="wish-remove">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-
-                <img class="wish-image" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1200"
-                    alt="Headphone">
-
-                <div class="wish-content">
-
-                    <h3 class="wish-name">
-                        Wireless Headphone
-                    </h3>
-
-                    <p class="wish-price">
-                        $180
-                    </p>
-
-                    <button class="wish-cart-btn">
-                        Add To Cart
-                    </button>
-
-                </div>
-
-            </div>
+            {% endif %}
 
         </div>
-
     </section>
 
 </section>
@@ -133,5 +60,5 @@ Wishlist
 {% endblock content %}
 
 {% block js %}
-<script src="{% static 'js/wishlist.js' %}"></script>
+{{ block.super }}
 {% endblock js %}
