@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
 
-# Create your models here.
+
 class CustomUser(AbstractUser):
     name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
@@ -13,3 +13,6 @@ class CustomUser(AbstractUser):
 
     class Meta:
         db_table = 'custom_user'
+
+    def __str__(self):
+        return self.email
